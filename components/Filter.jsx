@@ -1,11 +1,12 @@
 "use client"
 import { Button } from "@nextui-org/button"
-import { useRef, useState} from "react"
-import { useRouter } from 'next/navigation'
+import { useRef, useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 export default function Filter(props) {
- 
+  const categoriesArray = []
+  const [categories, setCategories] = useState(categoriesArray)
   const [shirtchecked, setShirtChecked] = useState(false)
   const [tshirtchecked, setTshirtChecked] = useState(false)
   const [bottomchecked, setBottomChecked] = useState(false)
@@ -17,36 +18,30 @@ export default function Filter(props) {
   const [sizeL, setSizeL] = useState(false)
   const [sizeXL, setSizeXL] = useState(false)
   const [size2XL, setSize2XL] = useState(false)
-  const [url, setUrl] = useState('http://localhost:3000/products/men?')
-  // let url = useRef('http://localhost:3000/products/men')
+  const [url, setUrl] = useState("http://localhost:3000/products/men?")
 
   const router = useRouter()
   const handleSubmit = () => {
-    if(shirtchecked){
-      // url = url + 'category=shirts&'
+    if (shirtchecked) {
       setUrl((prev) => {
-        return prev + 'category=shrit&'
+        return prev + "category=shrit&"
       })
       console.log(url)
     }
-    if(tshirtchecked){
-      // url = url + 'category=tshirt&'
-      setUrl((prev) => prev + 'category=tshirt&')
+    if (tshirtchecked) {
+      setUrl((prev) => prev + "category=tshirt&")
       console.log(url)
     }
-    if(bottomchecked){
-      // url = url + 'category=bottom&'
-      setUrl((prev) => prev + 'category=bottom&')
+    if (bottomchecked) {
+      setUrl((prev) => prev + "category=bottom&")
       console.log(url)
     }
-    if(sweatshirtchecked){
-      // url = url + 'category=sweatshirt'
-      // setUrl((prev) => prev + 'category=sweatshirt&')
+    if (sweatshirtchecked) {
       console.log(url)
     }
-    if(hoodiechecked){
+    if (hoodiechecked) {
       // url = url + 'category=hoodie&'
-      setUrl((prev) => prev + 'category=hoodie&')
+      setUrl((prev) => prev + "category=hoodie&")
       console.log(url)
     }
     console.log(url)
@@ -125,16 +120,139 @@ export default function Filter(props) {
         <div className="flex mb-2 ">
           <input
             type="checkbox"
-            onChange={() => {
-
-              setShirtChecked((prev) => !prev)
+            onChange={(e) => {
+              if (e.target.checked) {
+                setCategories((cat) => {
+                  console.log("Shirt has been inserted in categories")
+                  return [...cat, "shirt"]
+                })
+      
+              } 
+              else if (e.target.checked === false) {
+                setCategories((cat) => {
+                  if (cat.includes("shirt")) {
+                    const index = cat.findIndex((item) => item === "shirt")
+                    cat.splice(index)
+                    console.log("Shirt has been removed from categories")
+                  }
+                  return [...cat]
+                })
+              }
             }}
             name="shirts"
             className="w-4 h-4 my-auto accent-black"
           />
-          <p className="ml-2">{`Shirts ${shirtchecked}`}</p>
+          <p className="ml-2">Shirts</p>
         </div>
-        <div className="flex mb-2">
+        <div className="flex mb-2 ">
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setCategories((cat) => {
+                  console.log("T-shrit has been inserted in categories")
+                  return [...cat, "tshirt"]
+                })
+      
+              } 
+              else if (e.target.checked === false) {
+                setCategories((cat) => {
+                  if (cat.includes("tshirt")) {
+                    const index = cat.findIndex((item) => item === "tshirt")
+                    cat.splice(index)
+                    console.log("T-shrit has been removed from categories")
+                  }
+                  return [...cat]
+                })
+              }
+            }}
+            name="tshirt"
+            className="w-4 h-4 my-auto accent-black"
+          />
+          <p className="ml-2">T-Shirts</p>
+        </div>
+        <div className="flex mb-2 ">
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setCategories((cat) => {
+                  console.log("Sweatshrit has been inserted in categories")
+                  return [...cat, "sweatshirt"]
+                })
+      
+              } 
+              else if (e.target.checked === false) {
+                setCategories((cat) => {
+                  if (cat.includes("sweatshirt")) {
+                    const index = cat.findIndex((item) => item === "sweatshirt")
+                    cat.splice(index)
+                    console.log("Sweatshirt has been removed from categories")
+                  }
+                  return [...cat]
+                })
+              }
+            }}
+            name="sweatshirt"
+            className="w-4 h-4 my-auto accent-black"
+          />
+          <p className="ml-2">Sweatshirts</p>
+        </div>
+        <div className="flex mb-2 ">
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setCategories((cat) => {
+                  console.log("Bottom has been inserted in categories")
+                  return [...cat, "bottom"]
+                })
+      
+              } 
+              else if (e.target.checked === false) {
+                setCategories((cat) => {
+                  if (cat.includes("bottom")) {
+                    const index = cat.findIndex((item) => item === "bottom")
+                    cat.splice(index)
+                    console.log("Bottom has been removed from categories")
+                  }
+                  return [...cat]
+                })
+              }
+            }}
+            name="bottom"
+            className="w-4 h-4 my-auto accent-black"
+          />
+          <p className="ml-2">Bottoms</p>
+        </div>
+        <div className="flex mb-2 ">
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              if (e.target.checked) {
+                setCategories((cat) => {
+                  console.log("Hoodie has been inserted in categories")
+                  return [...cat, "hoodie"]
+                })
+      
+              } 
+              else if (e.target.checked === false) {
+                setCategories((cat) => {
+                  if (cat.includes("hoodie")) {
+                    const index = cat.findIndex((item) => item === "hoodie")
+                    cat.splice(index)
+                    console.log("Hoodie has been removed from categories")
+                  }
+                  return [...cat]
+                })
+              }
+            }}
+            name="hoodie"
+            className="w-4 h-4 my-auto accent-black"
+          />
+          <p className="ml-2">Hoodies</p>
+        </div>
+        {/* <div className="flex mb-2">
           <input
             type="checkbox"
             onChange={() => {
@@ -177,7 +295,7 @@ export default function Filter(props) {
             className="w-4 h-4 my-auto accent-black"
           />
           <p className="ml-2">Hoodies {`${hoodiechecked}`}</p>
-        </div>
+        </div> */}
       </div>
       <hr></hr>
       <div>
@@ -246,10 +364,12 @@ export default function Filter(props) {
         </div>
       </div>
       <hr className="mt-6" />
-      <Button onClick={handleSubmit} className="bg-black text-white p-4 my-6 w-full">
+      <Button
+        onClick={()=>{console.log(categories)}}
+        className="bg-black text-white p-4 my-6 w-full"
+      >
         Apply Filters
       </Button>
-  
     </div>
   )
 }
