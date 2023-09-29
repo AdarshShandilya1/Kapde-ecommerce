@@ -1,7 +1,9 @@
 import Image from "next/image"
 import shirt_img from "@/public/images/shirt_img.webp"
+import Link from "next/link"
 export default function Card(props) {
   return (
+    <Link href={`/${props.id}`}>
     <div className=" w-full text-center font-thin border p-2 rounded-sm">
       <div className=" overflow-hidden w-full rounded-sm">
         <Image
@@ -24,5 +26,6 @@ export default function Card(props) {
         <div className="border py-2 w-10  hover:text-white hover:bg-black cursor-pointer">XXL</div>
       </div> */}
     </div>
+    </Link>
   )
 }

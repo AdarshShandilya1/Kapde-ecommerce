@@ -24,28 +24,28 @@ export default function Navbar() {
           </Link>
 
           <div className="h-fit w-52 bg-white absolute flex-col p-4 hidden mt-8 shadow-md rounded-md z-10 -left-20">
-            <Link href={"/products/men/tshrits?color=blue&color=red"}>
+            <Link href={"/products/men?category=tshirt"}>
               <Button className="w-full text-left p-2 px-4 rounded-md hover:bg-black hover:text-white">
                 T-Shirts
               </Button>
             </Link>
 
-            <Link href={"/products/men/shirts"}>
+            <Link href={"/products/men?category=shirt"}>
               <Button className="w-full text-left p-2 px-4 rounded-md hover:bg-black hover:text-white">
                 Shirts
               </Button>
             </Link>
-            <Link href={"/products/men/sweatshirts"}>
+            <Link href={"/products/men?category=sweatshirt"}>
               <Button className="w-full text-left p-2 px-4 rounded-md hover:bg-black hover:text-white">
                 Sweatshirts
               </Button>
             </Link>
-            <Link href={"/products/men/bottom"}>
+            <Link href={"/products/men?category=bottom"}>
               <Button className="w-full text-left p-2 px-4 rounded-md hover:bg-black hover:text-white">
                 Bottoms
               </Button>
             </Link>
-            <Link href={"/products/men/hoodies"}>
+            <Link href={"/products/men?category=hoodie"}>
               <Button className="w-full text-left p-2 px-4 rounded-md hover:bg-black hover:text-white">
                 Hoodies
               </Button>
@@ -105,7 +105,7 @@ export default function Navbar() {
           </div>
 
           <input
-            className=" bg-gray-100 w-full p-1 !ring-0 !ring-offset-0  placeholder:text-gray-600 rounded-r-md border-r border-y border-slate-800 focus:outline-none pl-2 "
+            className=" bg-gray-50 w-full p-1 !ring-0 !ring-offset-0  placeholder:text-gray-600 rounded-r-md border-r border-y border-slate-800 focus:outline-none pl-2 "
             placeholder="Search"
             type="input"
           ></input>

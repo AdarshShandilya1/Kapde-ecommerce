@@ -6,47 +6,33 @@ import Link from "next/link"
 
 export default function Filter(props) {
   const categoriesArray = []
+  const sizeArray = []
   const [categories, setCategories] = useState(categoriesArray)
-  const [shirtchecked, setShirtChecked] = useState(false)
-  const [tshirtchecked, setTshirtChecked] = useState(false)
-  const [bottomchecked, setBottomChecked] = useState(false)
-  const [sweatshirtchecked, setSweatshirtChecked] = useState(false)
-  const [hoodiechecked, setHoodieChecked] = useState(false)
+  const [sizes, setSizes] = useState(sizeArray)
   const [pricerange, setPriceRange] = useState(0)
-  const [sizeS, setSizeS] = useState(false)
-  const [sizeM, setSizeM] = useState(false)
-  const [sizeL, setSizeL] = useState(false)
-  const [sizeXL, setSizeXL] = useState(false)
-  const [size2XL, setSize2XL] = useState(false)
-  const [url, setUrl] = useState("http://localhost:3000/products/men?")
+  
 
-  const router = useRouter()
-  const handleSubmit = () => {
-    if (shirtchecked) {
-      setUrl((prev) => {
-        return prev + "category=shrit&"
-      })
-      console.log(url)
-    }
-    if (tshirtchecked) {
-      setUrl((prev) => prev + "category=tshirt&")
-      console.log(url)
-    }
-    if (bottomchecked) {
-      setUrl((prev) => prev + "category=bottom&")
-      console.log(url)
-    }
-    if (sweatshirtchecked) {
-      console.log(url)
-    }
-    if (hoodiechecked) {
-      // url = url + 'category=hoodie&'
-      setUrl((prev) => prev + "category=hoodie&")
-      console.log(url)
-    }
-    console.log(url)
-    router.push(url)
+  let urlfilters = "http://localhost:3000/products/men?"
+  categories.forEach(item => {
+    urlfilters = urlfilters.concat(`category=${item}&`)
+    console.log(urlfilters)
+  })
+  sizes.forEach(item => {
+    urlfilters = urlfilters.concat(`size=${item}&`)
+    console.log(urlfilters)
+  })
+
+  if(pricerange !== 0){
+    urlfilters = urlfilters.concat(`price=${pricerange}`)
+    console.log(urlfilters)
   }
+  const router = useRouter()
+
+  const handleClick = (e)=>{
+    e.preventDefault();
+    router.push(urlfilters)
+  }
+  
   return (
     <div className="w-1/4 h-full table-fixed px-10 py-6">
       <div className="mb-2">
@@ -252,50 +238,7 @@ export default function Filter(props) {
           />
           <p className="ml-2">Hoodies</p>
         </div>
-        {/* <div className="flex mb-2">
-          <input
-            type="checkbox"
-            onChange={() => {
-              setTshirtChecked((prev) => !prev)
-            }}
-            name="tshirts"
-            className="w-4 h-4 my-auto accent-black"
-          />
-          <p className="ml-2">T-Shirts {`${tshirtchecked}`}</p>
-        </div>
-        <div className="flex mb-2">
-          <input
-            type="checkbox"
-            onChange={() => {
-              setBottomChecked((prev) => !prev)
-            }}
-            name="bottoms"
-            className="w-4 h-4 my-auto accent-black"
-          />
-          <p className="ml-2">Bottoms {`${bottomchecked}`}</p>
-        </div>
-        <div className="flex mb-2">
-          <input
-            type="checkbox"
-            onChange={() => {
-              setSweatshirtChecked((prev) => !prev)
-            }}
-            name="sweatshrits"
-            className="w-4 h-4 my-auto accent-black"
-          />
-          <p className="ml-2">Sweatshirts {`${sweatshirtchecked}`}</p>
-        </div>
-        <div className="flex mb-2">
-          <input
-            type="checkbox"
-            onChange={() => {
-              setHoodieChecked((prev) => !prev)
-            }}
-            name="hoodies"
-            className="w-4 h-4 my-auto accent-black"
-          />
-          <p className="ml-2">Hoodies {`${hoodiechecked}`}</p>
-        </div> */}
+        
       </div>
       <hr></hr>
       <div>
@@ -303,22 +246,45 @@ export default function Filter(props) {
         <div className="grid grid-cols-3 gap-2">
           <Button
             onClick={() => {
-              setSizeS((prev) => !prev)
+              if(sizes.includes("S")){
+                  setSizes((arr) =>{
+                    const index = arr.findIndex((ele) => ele === "S")
+                    arr.splice(index)
+                    return [...arr]
+                  })
+              }
+              else if(sizes.includes("S") === false){
+                  setSizes((arr) =>{
+                    return [...arr, "S"]
+                  })
+              }
             }}
             className={
-              sizeS
+              sizes.includes("S")
                 ? " py-2 rounded-md text-center bg-black text-white border-none"
                 : " py-2 border rounded-md text-center hover:bg-gray-200 hover: cursor-pointer "
             }
           >
             S
           </Button>
+
           <Button
             onClick={() => {
-              setSizeM((prev) => !prev)
+              if(sizes.includes("M")){
+                  setSizes((arr) =>{
+                    const index = arr.findIndex((ele) => ele === "M")
+                    arr.splice(index)
+                    return [...arr]
+                  })
+              }
+              else if(sizes.includes("M") === false){
+                  setSizes((arr) =>{
+                    return [...arr, "M"]
+                  })
+              }
             }}
             className={
-              sizeM
+              sizes.includes("M")
                 ? " py-2 rounded-md text-center bg-black text-white border-none"
                 : " py-2 border rounded-md text-center hover:bg-gray-200 hover: cursor-pointer "
             }
@@ -327,10 +293,21 @@ export default function Filter(props) {
           </Button>
           <Button
             onClick={() => {
-              setSizeL((prev) => !prev)
+              if(sizes.includes("L")){
+                  setSizes((arr) =>{
+                    const index = arr.findIndex((ele) => ele === "L")
+                    arr.splice(index)
+                    return [...arr]
+                  })
+              }
+              else if(sizes.includes("L") === false){
+                  setSizes((arr) =>{
+                    return [...arr, "L"]
+                  })
+              }
             }}
             className={
-              sizeL
+              sizes.includes("L")
                 ? " py-2 rounded-md text-center bg-black text-white border-none"
                 : " py-2 border rounded-md text-center hover:bg-gray-200 hover: cursor-pointer "
             }
@@ -339,10 +316,21 @@ export default function Filter(props) {
           </Button>
           <Button
             onClick={() => {
-              setSizeXL((prev) => !prev)
+              if(sizes.includes("XL")){
+                  setSizes((arr) =>{
+                    const index = arr.findIndex((ele) => ele === "XL")
+                    arr.splice(index)
+                    return [...arr]
+                  })
+              }
+              else if(sizes.includes("XL") === false){
+                  setSizes((arr) =>{
+                    return [...arr, "XL"]
+                  })
+              }
             }}
             className={
-              sizeXL
+              sizes.includes("XL")
                 ? " py-2 rounded-md text-center bg-black text-white border-none"
                 : " py-2 border rounded-md text-center hover:bg-gray-200 hover: cursor-pointer "
             }
@@ -351,21 +339,37 @@ export default function Filter(props) {
           </Button>
           <Button
             onClick={() => {
-              setSize2XL((prev) => !prev)
+              if(sizes.includes("XXL")){
+                  setSizes((arr) =>{
+                    const index = arr.findIndex((ele) => ele === "XXL")
+                    arr.splice(index)
+                    return [...arr]
+                  })
+              }
+              else if(sizes.includes("XXL") === false){
+                  setSizes((arr) =>{
+                    return [...arr, "XXL"]
+                  })
+              }
             }}
             className={
-              size2XL
+              sizes.includes("XXL")
                 ? " py-2 rounded-md text-center bg-black text-white border-none"
                 : " py-2 border rounded-md text-center hover:bg-gray-200 hover: cursor-pointer "
             }
           >
-            2XL
+            XXL
           </Button>
+          
         </div>
       </div>
       <hr className="mt-6" />
       <Button
-        onClick={()=>{console.log(categories)}}
+        onClick={(e)=>{
+          console.log(categories)
+          console.log(sizes)
+          handleClick(e)
+        }}
         className="bg-black text-white p-4 my-6 w-full"
       >
         Apply Filters

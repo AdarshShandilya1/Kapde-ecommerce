@@ -1,7 +1,7 @@
 export default function Footer(){
     return(
         <>
-            <div className="grid grid-cols-2 md:grid-cols-3 p-14 bg-gray-100">
+            <div className="grid grid-cols-2 md:grid-cols-3 p-14 bg-gray-50">
                 <div className="flex flex-col gap-4 ">
                     <p className=" font-semibold">SUPPORT</p>
                     <p className="cursor-pointer w-fit link link-underline link-underline-black text-black">All Reviews</p>
@@ -25,7 +25,7 @@ export default function Footer(){
                     <p className="cursor-pointer w-fit link link-underline link-underline-black text-black">Twitter</p>
                 </div>
             </div>
-            <div  className="px-14 pb-14 text-sm bg-gray-100">KAPDE ESSENTIALS PRIVATE LIMITED © 2023</div>
+            <div  className="px-14 pb-14 text-sm bg-gray-50">KAPDE ESSENTIALS PRIVATE LIMITED © 2023</div>
 
         </>
        
