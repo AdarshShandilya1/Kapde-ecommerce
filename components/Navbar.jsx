@@ -5,9 +5,11 @@ import profile_img from "@/public/images/profile_img.png"
 import search_img from "@/public/images/search_img.png"
 import Image from "next/image"
 
+
+
 export default function Navbar() {
   return (
-    <div className="p-6 w-full px-8 flex justify-between font-light fixed  z-50 bg-gray-50">
+    <div className="p-6 top-0 w-full px-8 flex justify-between font-light fixed  z-50 bg-gray-50">
       <div className="flex gap-12">
         <Link
           className="animate-bounce font-normal text-2xl mt-auto"
@@ -114,8 +116,9 @@ export default function Navbar() {
         <Link className="my-auto " href={"/admin"}>
           <Image src={profile_img} width={25} height={25}></Image>
         </Link>
-        <Link className="my-auto" href={"/cart"}>
+        <Link className="my-auto relative" href={"/cart"}>
           <Image src={bag_img} width={25} height={25}></Image>
+          <div className=" -top-1  left-4 absolute h-5 w-5 text-white text-center m-auto text-sm rounded-full bg-black">0</div>
         </Link>
       </div>
     </div>

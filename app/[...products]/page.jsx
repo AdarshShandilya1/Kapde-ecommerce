@@ -34,7 +34,7 @@ export default async function Products({params, searchParams}){
     console.log("this is filtered array " ,filteredArray)
 
   return (
-    <div>
+    <div className="p-8">
       <div className=" grid grid-cols-2 text-center pt-[calc(111.6px)]">
         <div className="border p-2 md:hidden" >
           Filters
@@ -47,7 +47,7 @@ export default async function Products({params, searchParams}){
 
       <div className="flex ">
         <Filter isSizeSelected={false} />
-        <div className="w-3/4 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-2 py-6  pr-6 gap-4 ml-auto">
+        <div className="w-3/4 grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-2 py-6  pr-6 gap-6 ml-auto">
           {filteredArray.map((product) => {
             return (
               <Card
