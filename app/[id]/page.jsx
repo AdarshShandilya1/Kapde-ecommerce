@@ -37,7 +37,7 @@ export default async function Details(props) {
   const id = props.params.id
   const products = await getItems(id)
   const { items } = await getSimilarProducts()
-  
+
   return (
     <div className=" pt-[calc(120px)] w-9/12 mx-auto ">
       {products ? (
@@ -58,17 +58,27 @@ export default async function Details(props) {
               </p>
               <p className="xl:text-xl mb-4"> Rs. {products.price}</p>
               <hr className="mb-4"></hr>
-              <Interaction />
+              <Interaction
+                id={products._id}
+                title={products.title}
+                price={products.price}
+                img={products.img}
+                category={products.category}
+                gender={products.gender}
+              />
             </div>
           </div>
 
           <Description />
           <p className="mt-10 text-2xl xl:text-3xl font-extrabold tracking-wider mb-4 capitalize">
-          our recommendations
+            our recommendations
           </p>
           <div className="flex gap-4 md:gap-9 overflow-x-scroll mt-6 mb-6">
             {items.map((product) => {
-              if (product.category === products.category && product._id !== products._id) {
+              if (
+                product.category === products.category &&
+                product._id !== products._id
+              ) {
                 return (
                   <Card
                     id={product._id}

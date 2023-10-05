@@ -8,6 +8,7 @@ export default function Card(props) {
       <div className=" overflow-hidden w-full rounded-sm">
         <Image
           className="hover:scale-110 ease-in-out duration-500"
+          alt="cloth-image"
           src={props.img}
           width={1000}
           height={1000}

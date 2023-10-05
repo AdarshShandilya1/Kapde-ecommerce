@@ -1,9 +1,14 @@
 "use client"
 import { Button } from "@nextui-org/react"
 import { useState } from "react"
-export default function Interaction() {
+import useItems from "@/libs/store"
+export default function Interaction(props) {
   const [sizeSelected, setSizeSelected] = useState("")
   const [qty, setQty] = useState(1)
+  const cartItems = useItems((state) => state.cartItems)
+  const additems = useItems((state) => state.addItems)
+  const increaseQuantity = useItems((state) => state.increaseQuantity)
+
   return (
     <div>
       <p className="mb-2">Size:</p>
@@ -102,7 +107,36 @@ export default function Interaction() {
         </Button>
       </div>
       <div className=" flex flex-col gap-4">
-        <Button className=" text-center text-sm py-4 bg-gray-50 border rounded-md tracking-widest ">
+        <Button
+          onClick={() => {
+            let flag = false;
+            for(let i=0; i<cartItems.length; i++){
+              if(cartItems[i].id === props.id && cartItems[i].size === sizeSelected){
+                flag = true
+              }
+            }
+            console.log(flag)
+            if(flag === true){
+              increaseQuantity(props.id, sizeSelected, qty)
+            }
+            else if (sizeSelected !== "" && flag === false) {
+              additems({
+                id: props.id,
+                title: props.title,
+                price: props.price,
+                img: props.img,
+                category: props.category,
+                gender: props.gender,
+                quantity: qty,
+                size: sizeSelected,
+              })
+              console.log(cartItems)
+            } else {
+              console.log("cannot add item to cart please slect the size first")
+            }
+          }}
+          className=" text-center text-sm py-4 bg-gray-50 border rounded-md tracking-widest "
+        >
           ADD TO CART
         </Button>
         <Button className="text-center text-sm py-4 bg-black text-white rounded-md tracking-widest">

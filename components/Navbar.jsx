@@ -4,6 +4,8 @@ import bag_img from "@/public/images/bag_img.png"
 import profile_img from "@/public/images/profile_img.png"
 import search_img from "@/public/images/search_img.png"
 import Image from "next/image"
+import MenDropdown from "./MenDropdown"
+import CartCount from "./CartCount"
 
 
 
@@ -24,7 +26,8 @@ export default function Navbar() {
           >
             MEN
           </Link>
-
+          <MenDropdown/>
+{/* 
           <div className="h-fit w-52 bg-white absolute flex-col p-4 hidden mt-8 shadow-md rounded-md z-10 -left-20">
             <Link href={"/products/men?category=tshirt"}>
               <Button className="w-full text-left p-2 px-4 rounded-md hover:bg-black hover:text-white">
@@ -52,7 +55,7 @@ export default function Navbar() {
                 Hoodies
               </Button>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         <div className="dropdown relative flex">
@@ -96,7 +99,7 @@ export default function Navbar() {
             </div> */}
       <div className="flex gap-12 ">
         <form className="mt-auto flex">
-          <div className="rounded-l-md border-l border-slate-800 border-y pl-1 ml-2">
+          <div className="bg-gray-50 rounded-l-md border-l border-slate-800 border-y pl-1 ml-2">
             <Image
               className="mt-2 mx-2"
               src={search_img}
@@ -118,7 +121,7 @@ export default function Navbar() {
         </Link>
         <Link className="my-auto relative" href={"/cart"}>
           <Image src={bag_img} width={25} height={25}></Image>
-          <div className=" -top-1  left-4 absolute h-5 w-5 text-white text-center m-auto text-sm rounded-full bg-black">0</div>
+          <CartCount/>
         </Link>
       </div>
     </div>
