@@ -1,5 +1,4 @@
 "use client"
-import shirt_img from "@/public/images/shirt_img.webp"
 import { Button } from "@nextui-org/react"
 import useItems from "@/libs/store"
 import Image from "next/image"

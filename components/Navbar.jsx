@@ -11,7 +11,7 @@ import CartCount from "./CartCount"
 
 export default function Navbar() {
   return (
-    <div className="p-6 top-0 w-full px-8 flex justify-between font-light fixed  z-50 bg-gray-50">
+    <div className="p-6 top-0 w-full px-8 flex justify-between font-light fixed  z-50 bg-gray-50 shadow-lg">
       <div className="flex gap-12">
         <Link
           className="animate-bounce font-normal text-2xl mt-auto"
@@ -99,7 +99,7 @@ export default function Navbar() {
             </div> */}
       <div className="flex gap-12 ">
         <form className="mt-auto flex">
-          <div className="bg-gray-50 rounded-l-md border-l border-slate-800 border-y pl-1 ml-2">
+          <div className="bg-gray-50 rounded-l-md border-l  border-y pl-1 ml-2">
             <Image
               className="mt-2 mx-2"
               src={search_img}
@@ -110,7 +110,7 @@ export default function Navbar() {
           </div>
 
           <input
-            className=" bg-gray-50 w-full p-1 !ring-0 !ring-offset-0  placeholder:text-gray-600 rounded-r-md border-r border-y border-slate-800 focus:outline-none pl-2 "
+            className=" bg-gray-50 w-full p-1 shadow-none ring-0 outline-none  placeholder:text-gray-600 rounded-r-md border-r border-y focus:outline-none pl-2 "
             placeholder="Search"
             type="input"
           ></input>

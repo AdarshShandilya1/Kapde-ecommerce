@@ -18,7 +18,7 @@ export default function Card(props) {
       </div>
       
       <p className="p-2 text-black font-thin ">{props.title}</p>
-      <p className="mb-4">Rs. {props.price}</p>
+      <p className="mb-2">Rs. {props.price}</p>
       {/* <div className="flex justify-center gap-2">
         <div className="border py-2 w-10 hover:text-white hover:bg-black cursor-pointer">S</div>
         <div className="border py-2 w-10  hover:text-white hover:bg-black cursor-pointer">M</div>

@@ -15,34 +15,39 @@ const getItems = async () => {
   }
 }
 
-
-export default async function Products({params, searchParams}){
-    const { items } = await getItems()
-    console.log(items)
-    console.log(searchParams)
-    let filteredArray = []
-    const filteredItems = ()=>{
-
-      items.forEach(item =>{
-        let paramsArray = {...searchParams, category:[searchParams.category]}
-        if(paramsArray.category.includes(item.category)){
-          filteredArray.push(item)
-        }
-      })
-    }
-    filteredItems()
-    console.log("this is filtered array " ,filteredArray)
+export default async function Products({ params, searchParams }) {
+  const { items } = await getItems()
+  console.log(items)
+  console.log(searchParams)
+  let filteredArray = []
+  console.log(searchParams.category?.length)
+  const filteredItems = () => {
+    items.forEach((item) => {
+      let paramsArray
+      if(typeof searchParams.category == "string"){
+       paramsArray = { ...searchParams, category: [searchParams.category] }
+      }
+      else{
+        paramsArray = {...searchParams}
+      }
+      if (paramsArray.category.includes(item.category)) {
+        filteredArray.push(item)
+      }
+    })
+  }
+  filteredItems()
+  console.log("this is filtered array ", filteredArray)
 
   return (
     <div className="p-8">
       <div className=" grid grid-cols-2 text-center pt-[calc(111.6px)]">
-        <div className="border p-2 md:hidden" >
-          Filters
-        </div>
+        <div className="border p-2 md:hidden">Filters</div>
         <div className="border p-2 md:hidden">Sort By</div>
       </div>
 
-      <h1 className="text-5xl text-center font-bold mt-11 capitalize">{params.products[1]}</h1>
+      <h1 className="text-5xl text-center font-bold mt-11 capitalize">
+        {params.products[1]}
+      </h1>
       <p className="text-center mt-6">{filteredArray.length} products</p>
 
       <div className="flex ">
@@ -64,5 +69,4 @@ export default async function Products({params, searchParams}){
       </div>
     </div>
   )
-
 }

@@ -30,14 +30,14 @@ export default function Cart() {
         </div>
       </div>
       <div className=" bg-black w-full h-20 fixed bottom-0  text-center grid grid-cols-3 text-white">
-        <Link className="m-auto  bg-gray-300 text-black rounded-md w-1/2 p-3 " href={"/"}>
+        <Link className="m-auto  bg-gray-50 text-black rounded-md w-1/2 p-3 " href={"/"}>
             Back To Shopping
         </Link>
 
         <p className="m-auto">
           Grand Total {":"} {total} INR
         </p>
-        <Button className=" bg-gray-300 text-black rounded-md w-1/2 m-auto p-3 ">
+        <Button className=" bg-gray-50 text-black rounded-md w-1/2 m-auto p-3 ">
           Checkout
         </Button>
       </div>

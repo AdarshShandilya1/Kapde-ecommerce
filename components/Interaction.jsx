@@ -8,10 +8,14 @@ export default function Interaction(props) {
   const cartItems = useItems((state) => state.cartItems)
   const additems = useItems((state) => state.addItems)
   const increaseQuantity = useItems((state) => state.increaseQuantity)
-
+  const [msg, setMsg] = useState("")
+  if(sizeSelected !== "" && msg !== ""){
+    setMsg("")
+  }
   return (
     <div>
       <p className="mb-2">Size:</p>
+      <div className="text-red-400 mb-2">{msg}</div>
       <div className="grid grid-cols-5 gap-2 mb-2 text-sm">
         <Button
           onClick={() => {
@@ -132,6 +136,7 @@ export default function Interaction(props) {
               })
               console.log(cartItems)
             } else {
+              setMsg("Plese select the size to add item to the cart")
               console.log("cannot add item to cart please slect the size first")
             }
           }}
