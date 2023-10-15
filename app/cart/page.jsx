@@ -11,7 +11,7 @@ export default function Cart() {
   }
   return (
     <>
-      <div className=" pt-[calc(90px)] pb-24">
+      <div className="pt-6 pb-24">
         <div className="grid grid-cols-2 w-fit mx-auto gap-4">
           {cartItems.map((itm) => {
             return (

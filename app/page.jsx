@@ -23,7 +23,7 @@ const getItems = async () => {
 export default async function Home() {
   const { items } = await getItems()
   return (
-    <div className="subpixel-antialiased pt-[calc(81.6px)]">
+    <div className="subpixel-antialiased ">
       <div className="relative">
         <div className="w-full overflow-hidden">
           <Image className="" src={banner_img} width={2000} style={{}} />
@@ -84,7 +84,7 @@ export default async function Home() {
           )
         })}
       </div>
-
+        <Footer/>
     </div>
   )
 }

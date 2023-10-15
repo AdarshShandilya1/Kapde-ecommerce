@@ -11,6 +11,7 @@ import CartCount from "./CartCount"
 
 export default function Navbar() {
   return (
+    <>
     <div className="p-6 top-0 w-full px-8 flex justify-between font-light fixed  z-50 bg-gray-50 shadow-lg">
       <div className="flex gap-12">
         <Link
@@ -125,5 +126,9 @@ export default function Navbar() {
         </Link>
       </div>
     </div>
+    <div className="h-[81.6px]">
+
+    </div>
+    </>
   )
 }

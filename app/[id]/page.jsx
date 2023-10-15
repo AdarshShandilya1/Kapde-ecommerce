@@ -2,6 +2,8 @@ import Image from "next/image"
 import Interaction from "@/components/Interaction"
 import Description from "@/components/Description"
 import Card from "@/components/Card"
+import Footer from "@/components/Footer"
+
 
 const getItems = async (id) => {
   try {
@@ -39,6 +41,7 @@ export default async function Details(props) {
   const { items } = await getSimilarProducts()
 
   return (
+    <>
     <div className=" pt-[calc(120px)] w-9/12 mx-auto ">
       {products ? (
         <>
@@ -94,9 +97,12 @@ export default async function Details(props) {
             })}
           </div>
         </>
+        
       ) : (
         <p>Loading...</p>
       )}
     </div>
+    <Footer/>
+    </>
   )
 }

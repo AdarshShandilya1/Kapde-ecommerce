@@ -28,8 +28,8 @@ export default function LoginForm() {
     }
   }
   return (
-    <div className="pt-[calc(81.6px)]">
-      <div className="w-5/6 md:w-[550px] m-auto mt-16 border px-6 py-10 rounded-md shadow-xl ">
+    <div className="flex items-center h-[calc(100vh-81.6px)]">
+      <div className="w-5/6 md:w-[550px] m-auto  border px-6 py-10 rounded-md shadow-xl ">
         <p className="w-fit mx-auto text-4xl font-[1000] ">Login</p>
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-6">
           <input
